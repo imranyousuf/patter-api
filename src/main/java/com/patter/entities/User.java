@@ -13,26 +13,35 @@ public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "USER_ID")
     public String id;
 
+    @Column(name = "USER_NAME")
     public String userName;
 
+    @Column(name = "FIRST_NAME")
     public String firstName;
 
+    @Column(name = "LAST_NAME")
     public String lastName;
 
+    @Column(name = "EMAIL")
     public String email;
+
+    @Column(name = "PASSWORD")
+    public String password;
+
+    @Column(name = "TOKEN")
+    public String token;
+
+    @Column(name = "IMG_URL")
+    public String imgUrl;
+
+    @Column(name = "SPACES")
+    public String spacesID;
 
     protected User(){
 
-    }
-
-    public User(String id, String userName, String firstName, String lastName, String email) {
-        this.id = id;
-        this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
     }
 
     public String getId() {
@@ -75,6 +84,39 @@ public class User {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getSpacesID() {
+        return spacesID;
+    }
+
+    public void setSpacesID(String spacesID) {
+        this.spacesID = spacesID;
+    }
+
+
     @Override
     public String toString() {
         return "User{" +
@@ -83,6 +125,10 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", token='" + token + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", spacesID='" + spacesID + '\'' +
                 '}';
     }
 }

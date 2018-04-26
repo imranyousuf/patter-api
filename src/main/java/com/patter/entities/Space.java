@@ -22,18 +22,18 @@ public class Space {
 
     private ArrayList<Integer> lstComments;
 
-    private Integer idea_key;
+    private Idea idea;
 
 
     protected Space() {
     }
 
-    public Space(long id, boolean isGeneral, ArrayList<Integer> lstUsers, ArrayList<Integer> lstComments, Integer idea_key) {
+    public Space(long id, boolean isGeneral, ArrayList<Integer> lstUsers, ArrayList<Integer> lstComments, Idea idea) {
         this.id = id;
         this.isGeneral = isGeneral;
         this.lstUsers = lstUsers;
         this.lstComments = lstComments;
-        this.idea_key = idea_key;
+        this.idea = idea;
     }
 
 
@@ -70,12 +70,12 @@ public class Space {
     }
 
 
-    public Integer getIdea_key() {
-        return idea_key;
+    public Idea getIdea() {
+        return idea;
     }
 
-    public void setIdea_key(Integer idea_key) {
-        this.idea_key = idea_key;
+    public void setIdea(Idea idea) {
+        this.idea = idea;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class Space {
                 ", isGeneral=" + isGeneral +
                 ", lstUsers=" + lstUsers +
                 ", lstComments=" + lstComments +
-                ", idea_key=" + idea_key +
+                ", idea=" + idea +
                 '}';
     }
 }

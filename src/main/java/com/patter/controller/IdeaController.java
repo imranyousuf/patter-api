@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/v1/idea")
 public class IdeaController {
     private static final Logger log = LoggerFactory.getLogger(IdeaController.class);
 
@@ -23,7 +23,7 @@ public class IdeaController {
     private IdeaRepository repository;
 
 
-    @RequestMapping(value = "/idea")
+    @RequestMapping(value = "/all")
     public List<Idea> getAllIdeas(){
         List<Idea> allIdeas = new ArrayList<>();
         for(Idea idea : repository.findAll()){
@@ -32,7 +32,7 @@ public class IdeaController {
         return allIdeas;
     }
 
-    @RequestMapping(value = "/idea/id/{id}")
+    @RequestMapping(value = "/id/{id}")
     public Idea getIdeaByID(@PathVariable(value="id") Long id){
         Idea idea = repository.findById(id);
         //return gson.toJson(idea);
@@ -40,13 +40,13 @@ public class IdeaController {
     }
 
 
-    @RequestMapping(value = "/idea/user/{user_id}")
+    @RequestMapping(value = "/user/{user_id}")
     public List<Idea> getIdeaByUser(@PathVariable(value="user_id") Integer user_id){
         List<Idea> idea = repository.findByUserKey(user_id);
         return idea;
     }
 
-    @RequestMapping(value = "/idea/id", method = RequestMethod.POST)
+    @RequestMapping(value = "/id", method = RequestMethod.POST)
     public String createIdea(@RequestBody Idea idea){
         //if idea exist logic
         repository.save(idea);
@@ -54,7 +54,7 @@ public class IdeaController {
 
     }
 
-    @RequestMapping(value = "/idea/id", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/id", method = RequestMethod.DELETE)
     public String deleteIdea(@RequestBody Idea idea){
         //if idea exist logic
         repository.delete(idea);

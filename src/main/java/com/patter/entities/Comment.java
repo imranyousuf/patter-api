@@ -19,6 +19,8 @@ public class Comment {
     private String description;
     private int upVote;
     private int downVote;
+    private boolean parent;
+    private Space space;
 
     protected Comment(){
 
