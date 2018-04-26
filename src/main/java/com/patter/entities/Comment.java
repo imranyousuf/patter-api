@@ -14,23 +14,39 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "SPACE_ID")
     private Long id;
 
+    @Column(name = "DESCRIPTION")
     private String description;
+
+    @Column(name = "UPVOTE")
     private int upVote;
+
+    @Column(name = "DOWNVOTE")
     private int downVote;
+
+    @Column(name = "PARENT")
     private boolean parent;
-    private Space space;
+
+    @Column(name = "SPACE_ID")
+    private int space;
+
+    @Column(name = "USER_KEY")
+    private int userKey;
 
     protected Comment(){
 
     }
 
-    public Comment(Long id, String description, int upVote, int downVote) {
-        this.id = id;
+
+    public Comment(String description, int upVote, int downVote, boolean parent, int space, int userKey) {
         this.description = description;
         this.upVote = upVote;
         this.downVote = downVote;
+        this.parent = parent;
+        this.space = space;
+        this.userKey = userKey;
     }
 
     public Long getId() {
@@ -65,6 +81,30 @@ public class Comment {
         this.downVote = downVote;
     }
 
+    public boolean isParent() {
+        return parent;
+    }
+
+    public void setParent(boolean parent) {
+        this.parent = parent;
+    }
+
+    public int getSpace() {
+        return space;
+    }
+
+    public void setSpace(int space) {
+        this.space = space;
+    }
+
+    public int getUserKey() {
+        return userKey;
+    }
+
+    public void setUserKey(int userKey) {
+        this.userKey = userKey;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
@@ -72,6 +112,9 @@ public class Comment {
                 ", description='" + description + '\'' +
                 ", upVote=" + upVote +
                 ", downVote=" + downVote +
+                ", parent=" + parent +
+                ", space=" + space +
+                ", userKey=" + userKey +
                 '}';
     }
 }
