@@ -14,28 +14,24 @@ import java.util.ArrayList;
 public class Space {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "SPACE_ID")
     private long id;
 
+    @Column(name = "IS_GENERAL")
     private boolean isGeneral;
 
+    @Column(name = "USER_ID_LIST")
     private ArrayList<Integer> lstUsers;
 
+    @Column(name = "COMMENT_ID_LIST")
     private ArrayList<Integer> lstComments;
 
-    private Idea idea;
+    @Column(name = "IDEA_ID")
+    private long idea_key;
 
 
     protected Space() {
     }
-
-    public Space(long id, boolean isGeneral, ArrayList<Integer> lstUsers, ArrayList<Integer> lstComments, Idea idea) {
-        this.id = id;
-        this.isGeneral = isGeneral;
-        this.lstUsers = lstUsers;
-        this.lstComments = lstComments;
-        this.idea = idea;
-    }
-
 
     public long getId() {
         return id;
@@ -69,13 +65,12 @@ public class Space {
         this.lstComments = lstComments;
     }
 
-
-    public Idea getIdea() {
-        return idea;
+    public long getIdea_key() {
+        return idea_key;
     }
 
-    public void setIdea(Idea idea) {
-        this.idea = idea;
+    public void setIdea_key(long idea_key) {
+        this.idea_key = idea_key;
     }
 
     @Override
@@ -85,7 +80,7 @@ public class Space {
                 ", isGeneral=" + isGeneral +
                 ", lstUsers=" + lstUsers +
                 ", lstComments=" + lstComments +
-                ", idea=" + idea +
+                ", idea_key=" + idea_key +
                 '}';
     }
 }
