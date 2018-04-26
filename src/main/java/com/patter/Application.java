@@ -1,8 +1,15 @@
 package com.patter;
 
 import com.patter.controller.CommentController;
+import com.patter.controller.UserController;
+import com.patter.entities.Comment;
 import com.patter.entities.Idea;
+import com.patter.entities.Space;
+import com.patter.entities.User;
+import com.patter.repos.CommentRepository;
 import com.patter.repos.IdeaRepository;
+import com.patter.repos.SpaceRepository;
+import com.patter.repos.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -14,6 +21,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -49,29 +57,40 @@ public class Application {
 
     //Testing
     @Bean
-    public CommandLineRunner check(IdeaRepository repository) {
+    public CommandLineRunner check(IdeaRepository ideaRepository, SpaceRepository spaceRepository, CommentRepository commentRepository, UserRepository userRepository) {
         return args -> {
 
-            repository.save(new Idea("FB LOGIN TEST", "ADD A BUTTON",1));
-            repository.save(new Idea("COFFEE MACHINE", "NEED COFFEE",2));
-            repository.save(new Idea("MANAGER SUCKS", "CAN WE FIRE THEM",1));
+            log.info("IDEA----------------->");
 
-            log.info("All the customers");
-            log.info("-----------------");
+            ideaRepository.save(new Idea("FB LOGIN TEST", "ADD A BUTTON",1));
+            ideaRepository.save(new Idea("COFFEE MACHINE", "NEED COFFEE",2));
+            ideaRepository.save(new Idea("MANAGER SUCKS", "CAN WE FIRE THEM",1));
 
-            for(Idea idea : repository.findAll()){
-                log.info(idea.toString());
-            }
+            log.info("SPACE----------------->");
 
-            log.info("---------------");
+            ArrayList<Integer> list = new ArrayList<>();
+            list.add(1);
+            list.add(2);
+            list.add(3);
 
-            log.info(repository.findById(2L).toString());
+            String arrayString = list.toString();
 
-            log.info("---------------");
+            spaceRepository.save(new Space(false,arrayString,arrayString,2L));
+            spaceRepository.save(new Space(false,arrayString,arrayString,3L));
+            spaceRepository.save(new Space(true,arrayString,arrayString,1L));
 
-           // log.info(repository.findByTitle("FB LOGIN TEST").toString());
 
+            log.info("Comments----------------->");
 
+            commentRepository.save(new Comment("Life is a test",12,2,true,2,1));
+            commentRepository.save(new Comment("Islam",120,0,true,2,1));
+            commentRepository.save(new Comment("Muslim",140,0,true,2,1));
+
+            log.info("Users----------------->");
+
+            userRepository.save(new User("imyousuf","Imran","Yousuf","imran@patter.com","hashedPassword","ValidateToekn","https://cdn.vox-cdn.com/thumbor/8tLchaDMIEDNzUD3mYQ7v1ZQL84=/0x0:2012x1341/920x613/filters:focal(0x0:2012x1341):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg","1,2,3"));
+            userRepository.save(new User("atef","Atef","Arabi","atef@patter.com","hashedPassword","ValidateToekn","https://cdn.vox-cdn.com/thumbor/8tLchaDMIEDNzUD3mYQ7v1ZQL84=/0x0:2012x1341/920x613/filters:focal(0x0:2012x1341):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg","1,2,3"));
+            userRepository.save(new User("daif","Saif","Nizam","saif@patter.com","hashedPassword","ValidateToekn","https://cdn.vox-cdn.com/thumbor/8tLchaDMIEDNzUD3mYQ7v1ZQL84=/0x0:2012x1341/920x613/filters:focal(0x0:2012x1341):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg","1,2,3"));
 
         };
     }

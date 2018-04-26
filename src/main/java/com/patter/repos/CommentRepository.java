@@ -9,7 +9,7 @@ import java.util.List;
 public interface CommentRepository extends CrudRepository<Comment, Long> {
     Comment findById(Long id);
     List<Comment> findByUserKey(Integer user_key);
-    Comment findBySpace(Integer space_id);
+    List<Comment> findBySpace(Integer space_id);
 
 
 }

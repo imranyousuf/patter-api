@@ -21,16 +21,23 @@ public class Space {
     private boolean isGeneral;
 
     @Column(name = "USER_ID_LIST")
-    private ArrayList<Integer> lstUsers;
+    private String lstUsers;
 
     @Column(name = "COMMENT_ID_LIST")
-    private ArrayList<Integer> lstComments;
+    private String lstComments;
 
     @Column(name = "IDEA_ID")
     private long idea_key;
 
 
     protected Space() {
+    }
+
+    public Space(boolean isGeneral, String lstUsers, String lstComments, long idea_key) {
+        this.isGeneral = isGeneral;
+        this.lstUsers = lstUsers;
+        this.lstComments = lstComments;
+        this.idea_key = idea_key;
     }
 
     public long getId() {
@@ -49,19 +56,19 @@ public class Space {
         isGeneral = general;
     }
 
-    public ArrayList<Integer> getLstUsers() {
+    public String getLstUsers() {
         return lstUsers;
     }
 
-    public void setLstUsers(ArrayList<Integer> lstUsers) {
+    public void setLstUsers(String lstUsers) {
         this.lstUsers = lstUsers;
     }
 
-    public ArrayList<Integer> getLstComments() {
+    public String getLstComments() {
         return lstComments;
     }
 
-    public void setLstComments(ArrayList<Integer> lstComments) {
+    public void setLstComments(String lstComments) {
         this.lstComments = lstComments;
     }
 

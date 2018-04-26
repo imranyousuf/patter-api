@@ -44,6 +44,17 @@ public class User {
 
     }
 
+    public User(String userName, String firstName, String lastName, String email, String password, String token, String imgUrl, String spacesID) {
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.token = token;
+        this.imgUrl = imgUrl;
+        this.spacesID = spacesID;
+    }
+
     public String getId() {
         return id;
     }

@@ -1,5 +1,3 @@
-*.gradle*
-.gradle/*
 .ideal/
 patter-api.iml
 .idea/gradle.xml

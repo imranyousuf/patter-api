@@ -3,6 +3,7 @@ package com.patter.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by iyousuf.
@@ -29,7 +30,7 @@ public class Comment {
     @Column(name = "PARENT")
     private boolean parent;
 
-    @Column(name = "SPACE_ID")
+    @Column(name = "SPACE_ID",insertable = false, updatable = false)
     private int space;
 
     @Column(name = "USER_KEY")
