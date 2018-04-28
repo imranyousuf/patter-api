@@ -10,3 +10,4 @@ patter-api.iml
 data/
 out/
 build/
+.gradle/*
