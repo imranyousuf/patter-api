@@ -46,7 +46,7 @@ public class IdeaController {
         return idea;
     }
 
-    @RequestMapping(value = "/id", method = RequestMethod.POST)
+    @RequestMapping(value = "/", method = RequestMethod.POST)
     public String createIdea(@RequestBody Idea idea){
         //if idea exist logic
         repository.save(idea);

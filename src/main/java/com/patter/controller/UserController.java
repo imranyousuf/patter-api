@@ -1,13 +1,12 @@
 package com.patter.controller;
 
 import com.patter.entities.Comment;
+import com.patter.entities.Idea;
 import com.patter.entities.User;
 import com.patter.repos.CommentRepository;
 import com.patter.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +39,22 @@ public class UserController {
     public User getUserByUserName(@PathVariable(value="user_name") String user_name){
         User user = repository.findByUserName(user_name);
         return user;
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public String createNewUser(@RequestBody User user){
+        //if idea exist logic
+        repository.save(user);
+        return user.getId().toString();
+
+    }
+
+    @RequestMapping(value = "/id", method = RequestMethod.DELETE)
+    public String deleteIdea(@RequestBody User user){
+        //if idea exist logic
+        repository.delete(user);
+        return user.getId().toString();
+
     }
 
 }
